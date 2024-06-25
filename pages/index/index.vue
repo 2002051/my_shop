@@ -18,7 +18,9 @@
 			</view>
 		</view>
 		<view class="main">
-			主体区域
+			<view class="articlebox" v-for="item in 3">
+				<articlelist></articlelist>
+			</view>
 		</view>
 	</view>
 
@@ -70,57 +72,71 @@
 </script>
 
 <style lang="scss" scoped>
-	.body{
-		background-color: #f3f3f3;
-		height: 100vh;
-	}
-	
-	.swpierBox {
-		// background-color: red;
-		width: 750rpx;
-		height: 320rpx;
-
-		swiper {
-			background-color: red;
-			height: 100%;
-			width: 100%;
-
-			swiper-item {
+	.body {
+		background-color: #e6e6e6;
+		// height: 100vh;
+		padding-bottom: 30rpx;
+		.swpierBox {
+			// background-color: red;
+			width: 750rpx;
+			height: 320rpx;
+		
+			swiper {
+				background-color: red;
 				height: 100%;
 				width: 100%;
-
-				image {
+		
+				swiper-item {
 					height: 100%;
 					width: 100%;
+		
+					image {
+						height: 100%;
+						width: 100%;
+					}
+		
 				}
-
 			}
 		}
-	}
-
-	.cartList {
-
-		margin: 15rpx;
-
-		height: 150rpx;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-
-		.cartItem {
-			width: 150rpx;
-			height: 100%;
-			// background-color: red;
+		
+		.cartList {
+		
+			margin: 15rpx;
+		
+			height: 150rpx;
 			display: flex;
-			flex-direction: column;
 			align-items: center;
-			image {
-				height: 80%;
-				width: 100%;
+			justify-content: space-around;
+		
+			.cartItem {
+				width: 150rpx;
+				height: 100%;
+				// background-color: red;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+		
+				image {
+					height: 80%;
+					width: 100%;
+				}
+			}
+		
+			.cartItem:hover {
+				background-color: wheat;
 			}
 		}
-		.cartItem:hover{
-			background-color: wheat;
+		
+		
+		.main{
+			.articlebox{
+				padding-top: 20rpx;
+			}
 		}
 	}
+
+	
+
+
+
 </style>
