@@ -1,6 +1,13 @@
 <template>
 
 	<view class="body">
+		<view class="notices">
+			<view class="text">
+				123
+			</view>
+	
+		</view>
+		
 		<view class="swpierBox">
 			<swiper>
 				<swiper-item>
@@ -49,9 +56,21 @@
 		img: "../../static/tabbar/3.png"
 	}])
 	onReady(x => {
-		token.value = localStorage.getItem("token");
-		// console.log("read函数", token.value)
+		// token.value = localStorage.getItem("token");
+		// console.log("111111",uni.getStorageSync("token"))
+		token.value = uni.getStorageSync("token")
 		DoValidateCode();
+		// uni.getStorage({
+		// 	key: "token",
+		// 	success: x => {
+		// 		// console.log("xXXX	",x)
+		// 		token.value = x.data
+		// 		DoValidateCode();
+		// 	}
+
+		// })
+		// console.log("token.value", token.value)
+		// console.log("read函数", token.value)
 
 	})
 	async function DoValidateCode() {
@@ -69,6 +88,7 @@
 			})
 		})
 	}
+	
 </script>
 
 <style lang="scss" scoped>
@@ -76,38 +96,39 @@
 		background-color: #e6e6e6;
 		// height: 100vh;
 		padding-bottom: 30rpx;
+
 		.swpierBox {
 			// background-color: red;
 			width: 750rpx;
 			height: 320rpx;
-		
+
 			swiper {
 				background-color: red;
 				height: 100%;
 				width: 100%;
-		
+
 				swiper-item {
 					height: 100%;
 					width: 100%;
-		
+
 					image {
 						height: 100%;
 						width: 100%;
 					}
-		
+
 				}
 			}
 		}
-		
+
 		.cartList {
-		
+
 			margin: 15rpx;
-		
+
 			height: 150rpx;
 			display: flex;
 			align-items: center;
 			justify-content: space-around;
-		
+
 			.cartItem {
 				width: 150rpx;
 				height: 100%;
@@ -115,28 +136,23 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-		
+
 				image {
 					height: 80%;
 					width: 100%;
 				}
 			}
-		
+
 			.cartItem:hover {
 				background-color: wheat;
 			}
 		}
-		
-		
-		.main{
-			.articlebox{
+
+
+		.main {
+			.articlebox {
 				padding-top: 20rpx;
 			}
 		}
 	}
-
-	
-
-
-
 </style>

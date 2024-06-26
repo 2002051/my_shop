@@ -116,12 +116,25 @@
 			...loginForm.value
 		}).then((res) => {
 			console.log(res, "ssss")
-			localStorage.setItem("token", res.data)
+			// localStorage.setItem("token", res.data)
+			uni.setStorage({
+				key: "token",
+				data: res.data,
+				success: X => {
+					console.log('token saved!');
+					uni.switchTab({
+						url: '/pages/index/index'
+					});
+				}
+			})
+
 			// 登录成功, 定向到某个页面
 			// ......
-			uni.redirectTo({
-				url: "/pages/index/index"
-			})
+			// uni.redirectTo({
+			// 	url: "/pages/index/index"
+			// })
+			// 跳转tabbar页
+
 		}).catch((err) => {
 			uni.showToast({
 				title: err.detail,
@@ -215,6 +228,7 @@
 		max-width: 400px;
 		background-color: #ffffff;
 		border-radius: 10px;
+		
 		padding: 20px;
 		box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 	}

@@ -1,61 +1,72 @@
 // 网络请求
 // 验证jwt 
+export function UploadAvatar(data = {}) {
+	return request({
+		url: "api/upload/avatar/",
+		method: "POST",
+		data: data
+	})
+}
+
+
 export function ValidateCode(data = {}) {
 	return request({
 		url: "api/validate/token/",
 		method: "POST",
-		data:data
+		data: data
 	})
 }
 
 
 export function apiLogin(data = {}) {
-	
+
 	return request({
 		url: "api/login/",
 		method: "POST",
-		data:data
+		data: data
 	})
 }
 
 export function apiGetCodeImg(data = {}) {
-	
+
 	return request({
 		url: "api/codeimg/",
 		method: "GET",
-		data:data
+		data: data
 	})
 }
 
 export function apiSendSms(data = {}) {
-	
+
 	return request({
 		url: "api/sms/",
 		method: "POST",
-		data:data
+		data: data
 	})
 }
 
 export function apiDoRegist(data = {}) {
-	
+
 	return request({
 		url: "api/regist/",
 		method: "POST",
-		data:data
+		data: data
 	})
 }
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 基础网络请求
-let BaseUrl = "http://127.0.0.1:8000/"
+// let BaseUrl = "http://127.0.0.1:8000/"
+// let BaseUrl = "http://192.168.1.5:8000/"
+let BaseUrl = "http://192.168.0.102:8000/"
 
 function request(config = {}) {
 	let {
-		method='GET',
-		url,
-		data= {},
-		header= {}
+		method = 'GET',
+			url,
+			data = {},
+			header = {}
 	} = config;
 	let URL = BaseUrl + url;
 	return new Promise((resolve, reject) => {
@@ -67,19 +78,19 @@ function request(config = {}) {
 			success: (res) => {
 				if (res.data.code === 0) {
 					resolve(res.data)
-				} else if(res.data.code === -2) {
+				} else if (res.data.code === -2) {
 					// uni.showModal({
 					// 	title: "错误",
 					// 	content: res.data.detail,
 					// 	showCancel: false
 					// });
-					reject(res.data); 
-				}else if(res.data.code === -1){
+					reject(res.data);
+				} else if (res.data.code === -1) {
 					reject(res.data);
 				}
 			},
 			fail: (err) => {
-				reject(err) 
+				reject(err)
 			}
 		})
 	})
